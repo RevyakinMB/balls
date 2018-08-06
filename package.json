@@ -4,7 +4,7 @@
   "description": "spheres impact simulation",
   "main": "app.js",
   "scripts": {
-    "start": "http-server ./app -a localhost -p 8000 -c-1",
+    "start": "http-server ./app -a localhost -p 8002 -c-1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
