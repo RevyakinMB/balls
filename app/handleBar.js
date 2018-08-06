@@ -2,10 +2,12 @@
     const
         ballsModel = App.import('ballsModel'),
         renderer = App.import('renderer'),
+        worker = App.import('worker'),
 
         onCanvasClick = (e) => {
             ballsModel.fireEvent('ballAdd', e);
             renderer.redraw();
+            worker.start(renderer.redraw);
         },
         eventsSubscribe = (canvas) => {
             canvas.addEventListener('click', onCanvasClick);
