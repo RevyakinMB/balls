@@ -3,18 +3,21 @@
     const
         ballsModel = App.import('ballsModel'),
         // delta t; TODO: deltaT service?
-        DT = 1 / 60, // 1/60 sec => 60fps
-        //DT = 1, // TESTING
+        //DT = 1/60 sec => 60fps
+        DT = 1/40, // TESTING
         ballMoveFn = (ball, currentBallIndex, balls) => {
-            console.log('moving ball', ball);
-            const otherBalls = balls;
+            const otherBalls = balls.slice();
             let f, vx0, vy0;
             otherBalls.splice(currentBallIndex, 1);
 
             f = otherBalls.reduce((acc, cBall) => {
+                let diffX = cBall.x - ball.x,
+                    diffY = cBall.y - ball.y,
+                    fx = 1 - 1 / Math.abs(diffX),
+                    fy = 1 - 1 / Math.abs(diffY);
                 return {
-                    fx: acc.fx + 1 - 1 / Math.abs(cBall.x - ball.x),
-                    fy: acc.fy + 1 - 1 / Math.abs(cBall.y - ball.y)
+                    fx: diffX > 0 ? acc.fx + fx : acc.fx - fx,
+                    fy: diffY > 0 ? acc.fy + fy : acc.fy - fy
                 };
             }, {
                 fx: 0,

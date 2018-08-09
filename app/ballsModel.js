@@ -8,7 +8,7 @@
                 ax: 0,
                 ay: 0,
                 // ball mass service?
-                m: 1,
+                m: 0.1,
                 r: 5
             };
             if (isNaN(parseFloat(x)) || isNaN(parseFloat(y))) {
@@ -27,8 +27,8 @@
         },
         getBalls = () => balls.slice();
 
-    fireEvent('ballAdd', {x: 100, y: 200});
-    fireEvent('ballAdd', {x: 300, y: 400});
+//    fireEvent('ballAdd', {x: 100, y: 200});
+//    fireEvent('ballAdd', {x: 300, y: 400});
 
     App.export('ballsModel', {
         fireEvent,

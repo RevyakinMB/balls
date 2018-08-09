@@ -20,6 +20,6 @@
             return;
         }
         canvases.forEach(eventsSubscribe);
-        renderer.redraw();
+        worker.start(renderer.redraw);
     });
 })(window.App);
